@@ -15,7 +15,7 @@ func PortChecker() (int64, error) {
 	for ; port <= 9999; port++ {
 		fmt.Println(strconv.FormatInt(int64(port), 10))
 		port, err := portCheck(port)
-		if err == nil {
+		if err == nil && port != -1 {
 			return port, nil
 		}
 	}
@@ -34,12 +34,12 @@ func portCheck(port int64) (int64, error) {
 	sb.WriteString(":")
 	sb.WriteString(strconv.FormatInt(int64(port), 10))
 
-	newSocket, err := net.Listen("tcp", sb.String())
+	newSocket, err := net.Dial("tcp", sb.String())
 
-	if err == nil && newSocket != nil {
+	if err != nil && newSocket == nil {
 		return port, nil
-		newSocket.Close()
 	}
 
+	newSocket.Close()
 	return -1, err
 }
