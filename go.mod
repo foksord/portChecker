@@ -1,3 +1,3 @@
-module fatihyolcu.com/portChecker
+module github.com/foksord/portChecker
 
 go 1.13
