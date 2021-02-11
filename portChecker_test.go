@@ -17,13 +17,13 @@ func TestPortChecker(t *testing.T) {
 		sb.WriteString(":")
 		sb.WriteString(strconv.FormatInt(int64(port), 10))
 		fmt.Println(sb.String())
-		newSocket, err := net.Listen("tcp", sb.String())
+		newSocket, err := net.Dial("tcp", sb.String())
 		if err != nil {
 			fmt.Println(err.Error())
 		} else {
 			fmt.Println("Port Oki :D")
+			newSocket.Close()
+			sb.Reset()
 		}
-		newSocket.Close()
-		sb.Reset()
 	}
 }
