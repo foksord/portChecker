@@ -2,7 +2,7 @@
 
 # Using
 
-func PortChecker() (p int, e error) 
+func PortChecker() (int64, error) 
 
 
 Example   
