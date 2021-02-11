@@ -4,8 +4,9 @@
 
 func PortChecker() (p int, e error) 
 
------------   Example   ---------------
----------------------------------------
+
+Example   
+```go
 package portChecker
 
 import (
@@ -21,4 +22,4 @@ func TestPortChecker(t *testing.T) {
 		fmt.Println(port)
 	}
 }
-----------------------------------------
+```
